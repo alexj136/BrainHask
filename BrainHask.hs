@@ -50,16 +50,17 @@ step cmds idx tape@(Tape (pre, c, post)) = case cmds !! idx of
     DEC -> return (idx + 1, Tape (pre, dec c, post))
     GET -> do { c' <- getChar ; return (idx + 1, Tape (pre, c', post)) }
     PUT -> do { putChar c     ; return (idx + 1, tape                ) }
-    JFD | c == '\0' -> return (runAhead cmds 0 idx, tape)
-    JFD | c /= '\0' -> return (idx + 1, moveRight tape)
-    JBK | c == '\0' -> return (idx + 1, moveRight tape)
-    JBK | c /= '\0' -> return (runBack  cmds 0 idx, tape)
+    JFD | c == '\0' -> return (runAhead cmds (-1) idx, tape)
+    JFD | c /= '\0' -> return (idx + 1, tape)
+    JBK | c == '\0' -> return (idx + 1, tape)
+    JBK | c /= '\0' -> return (runBack  cmds (-1) idx, tape)
 
 run :: [CMD] -> Int -> Tape -> IO ()
-run cmds idx _    | idx >= length cmds = return ()
-run cmds idx tape | idx <  length cmds = do
-    (newIdx, newTape) <- step cmds idx tape
-    run cmds newIdx newTape
+run cmds idx tape
+    | idx >= length cmds = return ()
+    | idx <  length cmds = do
+        (newIdx, newTape) <- step cmds idx tape
+        run cmds newIdx newTape
 
 scan :: String -> [CMD]
 scan str = case str of
