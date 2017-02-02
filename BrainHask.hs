@@ -72,8 +72,7 @@ scan str = case str of
     '.' : cs -> PUT : scan cs
     '[' : cs -> JFD : scan cs
     ']' : cs -> JBK : scan cs
-    c : cs | isSpace c -> scan cs
-    c : cs -> scan $ tail $ dropWhile (/= '\n') cs
+    _ : cs -> scan cs
     [] -> []
 
 parse :: Int -> [CMD] -> Bool

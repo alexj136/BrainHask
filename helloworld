@@ -1,0 +1,49 @@
+A hello world program for BrainHask
+
+The letter H is 72 in ascii
+This loop puts 72 in cell 2 by first putting 6 at cell 0; 6 at cell 1; and 2
+at cell 2; multiplying them all together and leaving the result 72 in cell 3
+
+++++++ [ > ++++++ [ > ++ [ > + < - ] < - ] < - ] > > > .
+
+The letter e is 101; we increment our printing cell (3) by adding 5*3*2 (30) and
+subtracting 1 to get from 72 to 101
+
+< < < +++++ [ > +++ [ > ++ [ > + < - ] < - ] < - ] > > > - .
+
+The letter l twice:
+
++++++++ ..
+
+The letter o
+
++++ .
+
+A space
+
+< < < +++++++++ [ > +++ [ > +++ [ > - < - ] < - ] < - ] > > > ++ .
+
+The letter W
+
+< < +++++++++++ [ > +++++ [ > + < - ] < - ] > > .
+
+The letter o
+
+< < ++++++ [ > ++++ [ > + < - ] < - ] > > .
+
+The letter r
++++ .
+
+The letter l
+------ .
+
+The letter d
+-------- .
+
+An exclamation mark
+
+< < < ++++ [ > ++++ [ > ++++ [ > - < - ] < - ] < - ] > > > --- .
+
+And finally a newline
+
+< < < ++++++ [ > ++ [ > ++ [ > - < - ] < - ] < - ] > > > + .
