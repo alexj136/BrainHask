@@ -1,4 +1,4 @@
-module BrainHask where
+module Main where
 
 import Data.Char (isSpace)
 import System.Exit (ExitCode, exitSuccess, exitFailure)
