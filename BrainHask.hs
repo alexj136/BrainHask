@@ -76,11 +76,12 @@ scan str = case str of
     [] -> []
 
 parse :: Int -> [CMD] -> Bool
-parse 0     []           = True
-parse _     []           = False
-parse depth (JFD : cmds) = parse (depth + 1) cmds
-parse depth (JBK : cmds) = parse (depth - 1) cmds
-parse depth (_   : cmds) = parse depth cmds
+parse 0     []                       = True
+parse _     []                       = False
+parse depth (JFD : cmds)             = parse (depth + 1) cmds
+parse depth (JBK : cmds) | depth > 0 = parse (depth - 1) cmds
+parse depth (JBK : _   ) | otherwise = False
+parse depth (_   : cmds)             = parse depth cmds
 
 main :: IO ExitCode
 main = do
